@@ -62,6 +62,8 @@ app.post("/vegetables/", vegetablesController.createVegetable);
 
 // ------------------------------------------------------------------Update Vegetables
 
+app.put("/vegetables/:id", vegetablesController.updateVegetable);
+
 // ------------------------------------------------------------------Delete Vegetables
 
 // ------------------------------------------------------------------End Vegetables Routes
