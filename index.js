@@ -94,6 +94,8 @@ app.put("/meat/:id", meatController.updateMeat);
 
 // ------------------------------------------------------------------Delete Meats
 
+app.delete("/meat/:id", meatController.deleteMeat);
+
 // ------------------------------------------------------------------End Meats Routes
 
 // Start server and listen on port

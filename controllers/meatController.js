@@ -85,10 +85,38 @@ const updateMeat = async (req, res) => {
     }
   };
 
+  //Delete Meat
+const deleteMeat = async (req, res) => {
+    try {
+      // Validate the provided meatID
+      const meatID = req.params.id;
+      if (!meatID) {
+        return res.status(400).json({ error: "Meat ID is required" });
+      }
+  
+      // Check if the meat exists
+      const existingMeat = await Meat.findById(meatID);
+      if (!existingMeat) {
+        return res.status(404).json({ error: "Meat not found" });
+      }
+  
+      // Delete the meat
+      const deletedMeat = await Meat.findByIdAndDelete(meatID);
+  
+      // Send a success response
+      res.json({ success: "Record has been deleted successfully" });
+    } catch (err) {
+      // Handle errors
+      console.error(err);
+      res.status(500).json({ error: "Server error" });
+    }
+  };
+
 //Export Controler Functions
 module.exports = {
     getAllMeats,
     getMeatById, 
     createMeat,  
     updateMeat, 
+    deleteMeat,
 };
