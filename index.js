@@ -22,7 +22,8 @@ databaseConnection();
 app.get("/", (req, res) => {
   res.send("This is the root of our server");
 });
-
+// ------------------------------------------------------------------Start Fruits Routes
+// ------------------------------------------------------------------
 // ------------------------------------------------------------------Get Fruits
 // Get all Fruits
 app.get("/fruits", fruitsController.fetchAllFruits);
@@ -36,8 +37,9 @@ app.post("/fruits", fruitsController.createFruit);
 app.put("/fruits/:id", fruitsController.updateFruit);
 
 // ------------------------------------------------------------------Delete Fruits
+app.delete("/fruits/:id", fruitsController.deleteFruit);
 
-// ------------------------------------------------------------------End Fruits
+// ------------------------------------------------------------------End Fruits Routes
 
 app.listen(PORT, () =>
   console.log(`Express server is listening on port ${PORT}`)
