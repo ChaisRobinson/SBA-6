@@ -27,14 +27,16 @@ app.get("/", (req, res) => {
 });
 
 // ------------------------------------------------------------------Start Fruits Routes
-// ------------------------------------------------------------------
+
 // ------------------------------------------------------------------Get Fruits
-// Get all Fruits
+
 app.get("/fruits", fruitsController.getAllFruits);
-// Get Fruit by ID
+// ------------------------------------------------------------------Get Fruits by ID
+
 app.get("/fruits/:id", fruitsController.getFruitById);
 
 //------------------------------------------------------------------Post Fruits
+
 app.post("/fruits", fruitsController.createFruit);
 
 // ------------------------------------------------------------------Update Fruits
@@ -45,27 +47,21 @@ app.delete("/fruits/:id", fruitsController.deleteFruit);
 
 // ------------------------------------------------------------------End Fruits Routes
 
-
 // ------------------------------------------------------------------Start Vegetables Routes
-// ------------------------------------------------------------------
-// ------------------------------------------------------------------Get Vegetables
-// Get all Vegetables
-app.get("/vegetables", vegetablesController.getAllVegetables);
-// Get Vegetable by ID
 
+// ------------------------------------------------------------------Get Vegetables
+
+app.get("/vegetables", vegetablesController.getAllVegetables);
+//  ------------------------------------------------------------------Get Vegetable by ID
+app.get("/vegetables/:id", vegetablesController.getVegetableById);
 
 //------------------------------------------------------------------Post Vegetables
 
-
 // ------------------------------------------------------------------Update Vegetables
-
 
 // ------------------------------------------------------------------Delete Vegetables
 
-
 // ------------------------------------------------------------------End Vegetables Routes
-
-
 
 // Start server and listen on port
 app.listen(PORT, () =>
