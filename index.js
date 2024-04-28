@@ -26,6 +26,8 @@ app.get("/", (req, res) => {
 // ------------------------------------------------------------------Get Fruits
 // Get all Fruits
 app.get("/fruits", notesController.fetchAllFruits);
+// Get Fruit by ID
+app.get("/fruits/:id", notesController.getFruitById);
 
 //------------------------------------------------------------------Post Fruits
 
