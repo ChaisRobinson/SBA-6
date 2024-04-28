@@ -16,6 +16,8 @@ const fruitsController = require("./controllers/fruitController");
 const Fruit = require("./models/fruit");
 const vegetablesController = require("./controllers/vegetablesController");
 const Vegetable = require("./models/vegetables");
+const meatController = require("./controllers/meatController");
+const Meat = require("./models/meats");
 
 // Connect to MongoDB
 databaseConnection();
@@ -57,6 +59,23 @@ app.get("/vegetables/:id", vegetablesController.getVegetableById);
 
 //------------------------------------------------------------------Post Vegetables
 app.post("/vegetables/", vegetablesController.createVegetable);
+
+// ------------------------------------------------------------------Update Vegetables
+
+// ------------------------------------------------------------------Delete Vegetables
+
+// ------------------------------------------------------------------End Vegetables Routes
+
+// ------------------------------------------------------------------Start Vegetables Routes
+
+// ------------------------------------------------------------------Get Vegetables
+
+app.get("/meat", meatController.getAllMeats);
+//  ------------------------------------------------------------------Get Vegetable by ID
+
+
+//------------------------------------------------------------------Post Vegetables
+
 
 // ------------------------------------------------------------------Update Vegetables
 
