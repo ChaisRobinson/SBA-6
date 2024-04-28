@@ -24,9 +24,33 @@ const createFruit = async (req, res) => {
     res.json(fruit);
 }
 
+//Update Fruit
+const updateFruit = async (req, res) => {
+    try {
+        const fruitID = req.params.id;
+        const { name, color, taste } = req.body;
+
+        const updatedFruit = await Fruit.findByIdAndUpdate(
+            fruitID,
+            { name, color, taste },
+            { new: true } 
+        );
+
+        if (!updatedFruit) {
+            return res.status(404).send("Fruit not found");
+        }
+
+        res.json(updatedFruit);
+    } catch (error) {
+        res.status(500).send(error.message || "Error updating fruit");
+    }
+}
+
+
 
 module.exports ={
     fetchAllFruits,
     getFruitById,
     createFruit,
+    updateFruit,
 };

@@ -33,6 +33,7 @@ app.get("/fruits/:id", fruitsController.getFruitById);
 app.post("/fruits", fruitsController.createFruit);
 
 // ------------------------------------------------------------------Update Fruits
+app.put("/fruits/:id", fruitsController.updateFruit);
 
 // ------------------------------------------------------------------Delete Fruits
 
