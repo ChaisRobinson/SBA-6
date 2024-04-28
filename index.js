@@ -11,7 +11,7 @@ app.use(express.json());
 app.use(cors());
 
 // Controllers
-const notesController = require("./controllers/fruitController");
+const fruitsController = require("./controllers/fruitController");
 const Fruit = require("./models/fruit");
 
 // Connect to MongoDB
@@ -25,11 +25,12 @@ app.get("/", (req, res) => {
 
 // ------------------------------------------------------------------Get Fruits
 // Get all Fruits
-app.get("/fruits", notesController.fetchAllFruits);
+app.get("/fruits", fruitsController.fetchAllFruits);
 // Get Fruit by ID
-app.get("/fruits/:id", notesController.getFruitById);
+app.get("/fruits/:id", fruitsController.getFruitById);
 
 //------------------------------------------------------------------Post Fruits
+app.post("/fruits", fruitsController.createFruit);
 
 // ------------------------------------------------------------------Update Fruits
 

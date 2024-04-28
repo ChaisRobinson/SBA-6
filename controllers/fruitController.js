@@ -16,10 +16,17 @@ const getFruitById = async (req, res) => {
     res.json(fruit);
 }
 
-
+//Create Fruit
+const createFruit = async (req, res) => {
+    console.log(`BODY: ${req.body}`);
+    const { name, color, taste } = req.body;
+    const fruit = await Fruit.create({ name, color, taste });
+    res.json(fruit);
+}
 
 
 module.exports ={
     fetchAllFruits,
     getFruitById,
+    createFruit,
 };
