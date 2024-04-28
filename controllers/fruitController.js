@@ -41,37 +41,37 @@ const getFruitById = async (req, res) => {
 
 //Create Fruit
 const createFruit = async (req, res) => {
-  try {
-    // Validate request body
-    const { name, color, taste } = req.body;
-    if (!name || !color || !taste) {
-      return res
-        .status(400)
-        .json({ error: "Name, color, and taste are required" });
+    try {
+      // Validate request body
+      const { fruit, color, taste } = req.body;
+      if (!fruit || !color || !taste) {
+        return res
+          .status(400)
+          .json({ error: "Fruit, color, and taste are required" });
+      }
+  
+      // Create a new fruit document
+      const newFruitDoc = await Fruit.create({ fruit, color, taste });
+  
+      // Send the newly created fruit document as a JSON response
+      res.status(201).json(newFruitDoc);
+    } catch (err) {
+      // Handle errors
+      console.error(err);
+      res.status(500).json({ error: "Server error" });
     }
-
-    // Create a new fruit document
-    const fruit = await Fruit.create({ name, color, taste });
-
-    // Send the newly created fruit document as a JSON response
-    res.status(201).json(fruit);
-  } catch (err) {
-    // Handle errors
-    console.error(err);
-    res.status(500).json({ error: "Server error" });
-  }
-};
-
+  };
+  
 //Update Fruit
 const updateFruit = async (req, res) => {
   try {
     // Validate request body
     const fruitID = req.params.id;
-    const { name, color, taste } = req.body;
+    const { fruit, color, taste } = req.body;
     // Update the fruit document
     const updatedFruit = await Fruit.findByIdAndUpdate(
       fruitID,
-      { name, color, taste },
+      { fruit, color, taste },
       { new: true }
     );
     // Send an error response if the fruit is not found
