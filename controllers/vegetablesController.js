@@ -39,9 +39,35 @@ const getAllVegetables = async (req, res) => {
     }
   };
 
+  
+  //Create Vegetable
+const createVegetable = async (req, res) => {
+  try {
+    // Validate request body
+    const { name, color, taste } = req.body;
+    if (!name || !color || !taste) {
+      return res
+        .status(400)
+        .json({ error: "Name, color, and texture are required" });
+    }
+
+    // Create a new vegetable document
+    const newVegetableDoc = await Vegtable.create({ name, color, taste });
+
+    // Send the newly created vegetable document as a JSON response
+    res.status(201).json(newVegetableDoc);
+  } catch (err) {
+    // Handle errors
+    console.error(err);
+    res.status(500).json({ error: "Server error" });
+  }
+};
+
+
 
   //Export Controler Functions
   module.exports = {
     getAllVegetables,
     getVegetableById,
+    createVegetable,
   }

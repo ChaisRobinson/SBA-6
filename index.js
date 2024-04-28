@@ -56,6 +56,7 @@ app.get("/vegetables", vegetablesController.getAllVegetables);
 app.get("/vegetables/:id", vegetablesController.getVegetableById);
 
 //------------------------------------------------------------------Post Vegetables
+app.post("/vegetables/", vegetablesController.createVegetable);
 
 // ------------------------------------------------------------------Update Vegetables
 
