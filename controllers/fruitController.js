@@ -2,19 +2,42 @@ const Fruit = require("../models/fruit");
 
 //Controler Functions
 
-//Get All Fruits
+// Get All Fruits
 const fetchAllFruits = async (req, res) => {
-  const fruits = await Fruit.find();
-  res.json(fruits);
+  try {
+    // Find all fruits
+    const fruits = await Fruit.find();
+    // Send the fruit document as a JSON response
+    res.json(fruits);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: "Server error" });
+  }
 };
 
-//Get Fruit by ID
+// Get Fruit by ID
 const getFruitById = async (req, res) => {
-  const fruitID = req.params.id;
-  const fruit = await Fruit.findById(fruitID);
-  res.json(fruit);
-};
+  try {
+    // Validate the provided fruitID
+    const fruitID = req.params.id;
+    if (!fruitID) {
+      return res.status(400).json({ error: "Fruit ID is required" });
+    }
 
+    // Find the fruit by ID
+    const fruit = await Fruit.findById(fruitID);
+
+    // Check if the fruit exists
+    if (!fruit) {
+      return res.status(404).json({ error: "Fruit not found" });
+    }
+    // Send the fruit document as a JSON response
+    res.json(fruit);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: "Server error" });
+  }
+};
 //Create Fruit
 const createFruit = async (req, res) => {
   try {
@@ -63,30 +86,30 @@ const updateFruit = async (req, res) => {
 
 //Delete Fruit
 const deleteFruit = async (req, res) => {
-    try {
-      // Validate the provided fruitID
-      const fruitID = req.params.id;
-      if (!fruitID) {
-        return res.status(400).json({ error: 'Fruit ID is required' });
-      }
-  
-      // Check if the fruit exists
-      const existingFruit = await Fruit.findById(fruitID);
-      if (!existingFruit) {
-        return res.status(404).json({ error: 'Fruit not found' });
-      }
-  
-      // Delete the fruit
-      const deletedFruit = await Fruit.findByIdAndDelete(fruitID);
-  
-      // Send a success response
-      res.json({ success: 'Record has been deleted successfully' });
-    } catch (err) {
-      // Handle errors
-      console.error(err);
-      res.status(500).json({ error: 'Server error' });
+  try {
+    // Validate the provided fruitID
+    const fruitID = req.params.id;
+    if (!fruitID) {
+      return res.status(400).json({ error: "Fruit ID is required" });
     }
+
+    // Check if the fruit exists
+    const existingFruit = await Fruit.findById(fruitID);
+    if (!existingFruit) {
+      return res.status(404).json({ error: "Fruit not found" });
+    }
+
+    // Delete the fruit
+    const deletedFruit = await Fruit.findByIdAndDelete(fruitID);
+
+    // Send a success response
+    res.json({ success: "Record has been deleted successfully" });
+  } catch (err) {
+    // Handle errors
+    console.error(err);
+    res.status(500).json({ error: "Server error" });
   }
+};
 
 module.exports = {
   fetchAllFruits,
