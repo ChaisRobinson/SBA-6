@@ -86,7 +86,11 @@ app.get("/meat/:id", meatController.getMeatById);
 
 //------------------------------------------------------------------Post Meats
 
+app.post("/meat", meatController.createMeat);
+
 // ------------------------------------------------------------------Update Meats
+
+app.put("/meat/:id", meatController.updateMeat);
 
 // ------------------------------------------------------------------Delete Meats
 

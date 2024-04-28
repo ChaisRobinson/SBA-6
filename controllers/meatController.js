@@ -39,8 +39,56 @@ const getMeatById = async (req, res) => {
     }
   };
 
+  //Create Meat
+  const createMeat = async (req, res) => {
+    try {
+        // Validate request body
+        const { name, color, taste } = req.body;
+        if (!name || !color || !taste) {
+          return res
+            .status(400)
+            .json({ error: "Name, color, and taste are required" });
+        }
+    
+        // Create a new meat document
+        const newMeatDoc = await Meat.create({ name, color, taste });
+    
+        // Send the newly created meat document as a JSON response
+        res.status(201).json(newMeatDoc);
+      } catch (err) {
+        // Handle errors
+        console.error(err);
+        res.status(500).json({ error: "Server error" });
+      }
+  };
+
+  //Update Meat
+const updateMeat = async (req, res) => {
+    try {
+      // Validate request body
+      const meatID = req.params.id;
+      const { name, color, taste } = req.body;
+      // Update the meat document
+      const updatedMeat = await Meat.findByIdAndUpdate(
+        meatID,
+        { name, color, taste },
+        { new: true }
+      );
+      // Send an error response if the meat is not found
+      if (!updatedMeat) {
+        return res.status(404).send("Meat not found");
+      }
+      // Send the updated meat document as a JSON response
+      res.json(updatedMeat);
+    } catch (error) {
+      res.status(500).send(error.message || "Error updating meat");
+    }
+  };
+
 //Export Controler Functions
 module.exports = {
     getAllMeats,
-    getMeatById,    
+    getMeatById, 
+    createMeat,  
+    updateMeat, 
 };

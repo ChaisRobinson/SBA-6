@@ -47,7 +47,7 @@ const createVegetable = async (req, res) => {
     if (!name || !color || !taste) {
       return res
         .status(400)
-        .json({ error: "Name, color, and texture are required" });
+        .json({ error: "Name, color, and taste are required" });
     }
 
     // Create a new vegetable document
@@ -61,6 +61,7 @@ const createVegetable = async (req, res) => {
     res.status(500).json({ error: "Server error" });
   }
 };
+
 //Update Vegetable
 const updateVegetable = async (req, res) => {
   try {
