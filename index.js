@@ -14,6 +14,8 @@ app.use(cors());
 // Controllers
 const fruitsController = require("./controllers/fruitController");
 const Fruit = require("./models/fruit");
+const vegetablesController = require("./controllers/vegetablesController");
+const Vegetable = require("./models/vegetables");
 
 // Connect to MongoDB
 databaseConnection();
@@ -42,6 +44,27 @@ app.put("/fruits/:id", fruitsController.updateFruit);
 app.delete("/fruits/:id", fruitsController.deleteFruit);
 
 // ------------------------------------------------------------------End Fruits Routes
+
+
+// ------------------------------------------------------------------Start Vegetables Routes
+// ------------------------------------------------------------------
+// ------------------------------------------------------------------Get Vegetables
+// Get all Vegetables
+app.get("/vegetables", vegetablesController.getAllVegetables);
+// Get Vegetable by ID
+
+
+//------------------------------------------------------------------Post Vegetables
+
+
+// ------------------------------------------------------------------Update Vegetables
+
+
+// ------------------------------------------------------------------Delete Vegetables
+
+
+// ------------------------------------------------------------------End Vegetables Routes
+
 
 
 // Start server and listen on port

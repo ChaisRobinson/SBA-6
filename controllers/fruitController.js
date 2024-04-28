@@ -61,7 +61,7 @@ const createFruit = async (req, res) => {
       res.status(500).json({ error: "Server error" });
     }
   };
-  
+
 //Update Fruit
 const updateFruit = async (req, res) => {
   try {
@@ -112,6 +112,7 @@ const deleteFruit = async (req, res) => {
   }
 };
 
+//Export Controller Functions
 module.exports = {
   getAllFruits,
   getFruitById,

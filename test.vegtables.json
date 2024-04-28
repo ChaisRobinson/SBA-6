@@ -1,0 +1,40 @@
+[{
+  "_id": {
+    "$oid": "662ea4e0dc4810cd4bfccc83"
+  },
+  "color": "Orange",
+  "name": "Caroot",
+  "taste": "sweet"
+},
+{
+  "_id": {
+    "$oid": "662ea552dc4810cd4bfccc84"
+  },
+  "color": "green",
+  "name": "Broccoli",
+  "taste": "Midly bitter"
+},
+{
+  "_id": {
+    "$oid": "662ea578dc4810cd4bfccc85"
+  },
+  "color": "Dark Green",
+  "name": "Spinach",
+  "taste": "Earthy"
+},
+{
+  "_id": {
+    "$oid": "662ea5b0dc4810cd4bfccc86"
+  },
+  "color": "Brwon/Red/Yellow/Purple",
+  "name": "Potato",
+  "taste": "Earthy/Starchy"
+},
+{
+  "_id": {
+    "$oid": "662ea60fdc4810cd4bfccc87"
+  },
+  "color": "Green",
+  "name": "Cucumber",
+  "taste": "Mild/Refreshing"
+}]
