@@ -84,10 +84,38 @@ const updateVegetable = async (req, res) => {
   }
 };
 
+//Delete Vegetable
+const deleteVegetable = async (req, res) => {
+  try {
+    // Validate the provided vegtableID
+    const vegetableID = req.params.id;
+    if (!vegetableID) {
+      return res.status(400).json({ error: "Vegtable ID is required" });
+    }
+
+    // Check if the vegtable exists
+    const existingVegetable = await Vegtable.findById(vegetableID);
+    if (!existingVegetable) {
+      return res.status(404).json({ error: "Vegtable not found" });
+    }
+
+    // Delete the vegtable
+    const deletedVegetable = await Vegtable.findByIdAndDelete(vegetableID);
+
+    // Send a success response
+    res.json({ success: "Record has been deleted successfully" });
+  } catch (err) {
+    // Handle errors
+    console.error(err);
+    res.status(500).json({ error: "Server error" });
+  }
+};
+
 //Export Controler Functions
 module.exports = {
   getAllVegetables,
   getVegetableById,
   createVegetable,
   updateVegetable,
+  deleteVegetable,
 };
