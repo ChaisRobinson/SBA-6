@@ -3,7 +3,7 @@ const Fruit = require("../models/fruit");
 //Controler Functions
 
 // Get All Fruits
-const fetchAllFruits = async (req, res) => {
+const getAllFruits = async (req, res) => {
   try {
     // Find all fruits
     const fruits = await Fruit.find();
@@ -38,6 +38,7 @@ const getFruitById = async (req, res) => {
     res.status(500).json({ error: "Server error" });
   }
 };
+
 //Create Fruit
 const createFruit = async (req, res) => {
   try {
@@ -112,7 +113,7 @@ const deleteFruit = async (req, res) => {
 };
 
 module.exports = {
-  fetchAllFruits,
+  getAllFruits,
   getFruitById,
   createFruit,
   updateFruit,

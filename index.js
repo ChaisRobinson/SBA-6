@@ -1,11 +1,12 @@
 require("dotenv").config();
-// Configure express
+// Configure requirements for database connection
 const express = require("express");
 const mongoose = require("mongoose");
 const app = express();
 const PORT = process.env.PORT || 3000;
 const databaseConnection = require("./conifg/databaseConnection");
 
+// Middleware
 const cors = require("cors");
 app.use(express.json());
 app.use(cors());
@@ -22,11 +23,12 @@ databaseConnection();
 app.get("/", (req, res) => {
   res.send("This is the root of our server");
 });
+
 // ------------------------------------------------------------------Start Fruits Routes
 // ------------------------------------------------------------------
 // ------------------------------------------------------------------Get Fruits
 // Get all Fruits
-app.get("/fruits", fruitsController.fetchAllFruits);
+app.get("/fruits", fruitsController.getAllFruits);
 // Get Fruit by ID
 app.get("/fruits/:id", fruitsController.getFruitById);
 
@@ -41,6 +43,8 @@ app.delete("/fruits/:id", fruitsController.deleteFruit);
 
 // ------------------------------------------------------------------End Fruits Routes
 
+
+// Start server and listen on port
 app.listen(PORT, () =>
   console.log(`Express server is listening on port ${PORT}`)
 );
