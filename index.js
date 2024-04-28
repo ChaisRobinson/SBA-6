@@ -33,6 +33,7 @@ app.get("/", (req, res) => {
 // ------------------------------------------------------------------Get Fruits
 
 app.get("/fruits", fruitsController.getAllFruits);
+
 // ------------------------------------------------------------------Get Fruits by ID
 
 app.get("/fruits/:id", fruitsController.getFruitById);
@@ -45,6 +46,7 @@ app.post("/fruits", fruitsController.createFruit);
 app.put("/fruits/:id", fruitsController.updateFruit);
 
 // ------------------------------------------------------------------Delete Fruits
+
 app.delete("/fruits/:id", fruitsController.deleteFruit);
 
 // ------------------------------------------------------------------End Fruits Routes
@@ -54,7 +56,9 @@ app.delete("/fruits/:id", fruitsController.deleteFruit);
 // ------------------------------------------------------------------Get Vegetables
 
 app.get("/vegetables", vegetablesController.getAllVegetables);
+
 //  ------------------------------------------------------------------Get Vegetable by ID
+
 app.get("/vegetables/:id", vegetablesController.getVegetableById);
 
 //------------------------------------------------------------------Post Vegetables
@@ -72,20 +76,21 @@ app.delete("/vegetables/:id", vegetablesController.deleteVegetable);
 
 // ------------------------------------------------------------------Start Vegetables Routes
 
-// ------------------------------------------------------------------Get Vegetables
+// ------------------------------------------------------------------Get Meats
 
 app.get("/meat", meatController.getAllMeats);
-//  ------------------------------------------------------------------Get Vegetable by ID
 
+//  ------------------------------------------------------------------Get Meat by ID
 
-//------------------------------------------------------------------Post Vegetables
+app.get("/meat/:id", meatController.getMeatById);
 
+//------------------------------------------------------------------Post Meats
 
-// ------------------------------------------------------------------Update Vegetables
+// ------------------------------------------------------------------Update Meats
 
-// ------------------------------------------------------------------Delete Vegetables
+// ------------------------------------------------------------------Delete Meats
 
-// ------------------------------------------------------------------End Vegetables Routes
+// ------------------------------------------------------------------End Meats Routes
 
 // Start server and listen on port
 app.listen(PORT, () =>
