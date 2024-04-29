@@ -66,6 +66,7 @@ The application adheres to modern code organization practices, enhancing readabi
 - Node.js
 - Express
 - MongoDB
+- Mongoose 
 
 ### Contributing
 We welcome contributions to this project. If you have suggestions or improvements, please fork the repository and submit a pull request, or open an issue with the tag "enhancement".
